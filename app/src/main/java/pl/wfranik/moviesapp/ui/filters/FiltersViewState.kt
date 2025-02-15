@@ -6,4 +6,5 @@ data class FiltersViewState(
     val genres: List<Genre> = emptyList(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
+    val selectedGenre: Genre = Genre.DEFAULT
 )

@@ -15,6 +15,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -67,6 +68,7 @@ internal fun FiltersScreenContent(
 
                 else -> GenresList(
                     genres = state.genres,
+                    selectedGenre = state.selectedGenre,
                     onGenreClick = { onViewAction(FiltersViewAction.OnGenreClicked(it)) }
                 )
             }
@@ -104,6 +106,7 @@ fun FiltersTopAppBar(
 @Composable
 fun GenresList(
     genres: List<Genre>,
+    selectedGenre: Genre,
     onGenreClick: (Genre) -> Unit
 ) {
     LazyColumn(
@@ -112,7 +115,7 @@ fun GenresList(
             .padding(8.dp)
     ) {
         items(genres) { genre ->
-            GenreItem(genre, onGenreClick)
+            GenreItem(genre, selectedGenre, onGenreClick)
         }
     }
 }
@@ -120,6 +123,7 @@ fun GenresList(
 @Composable
 fun GenreItem(
     genre: Genre,
+    selectedGenre: Genre,
     onGenreClick: (Genre) -> Unit
 ) {
     Card(
@@ -127,6 +131,14 @@ fun GenreItem(
         elevation = CardDefaults.cardElevation(6.dp),
         modifier = Modifier.padding(8.dp),
         onClick = { onGenreClick(genre) },
+        colors = if (genre == selectedGenre) {
+            CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.secondary,
+                contentColor = MaterialTheme.colorScheme.onSecondary
+            )
+        } else {
+            CardDefaults.cardColors()
+        }
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Text(
@@ -134,7 +146,6 @@ fun GenreItem(
                 modifier = Modifier.padding(16.dp),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black
             )
         }
     }
@@ -154,6 +165,7 @@ private fun PreviewGenreItem() {
     MoviesAppTheme {
         GenreItem(
             genre = Genre(1, TextLabel("Action")),
+            selectedGenre = Genre.DEFAULT,
             onGenreClick = { }
         )
     }
@@ -186,6 +198,7 @@ private fun PreviewGenresList() {
                 Genre(18, TextLabel("Western")),
                 Genre(19, TextLabel("TV Movie"))
             ),
+            selectedGenre = Genre.DEFAULT,
             onGenreClick = { }
         )
     }

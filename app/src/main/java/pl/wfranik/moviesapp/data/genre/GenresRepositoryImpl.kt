@@ -31,4 +31,7 @@ class GenresRepositoryImpl @Inject constructor(
     override suspend fun clearSelectedGenre(): Result<Unit> = runCatching {
         genreInMemoryStore.clearSelectedGenre()
     }
+
+    override fun getSelectedGenre(): Genre = genreInMemoryStore.getSelectedGenre()
+
 }

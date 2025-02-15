@@ -8,4 +8,5 @@ interface GenresRepository {
     suspend fun saveGenre(genre: Genre): Result<Unit>
     fun observeSelectedGenre(): Flow<Genre>
     suspend fun clearSelectedGenre(): Result<Unit>
+    fun getSelectedGenre(): Genre
 }

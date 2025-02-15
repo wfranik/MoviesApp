@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import pl.wfranik.moviesapp.domain.ClearSelectedGenreUseCase
+import pl.wfranik.moviesapp.domain.GetSelectedGenreUseCase
 import pl.wfranik.moviesapp.domain.LoadGenresUseCase
 import pl.wfranik.moviesapp.domain.SaveGenreUseCase
 import pl.wfranik.moviesapp.domain.model.Genre
@@ -22,13 +23,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FiltersViewModel @Inject constructor(
+    getSelectedGenreUseCase: GetSelectedGenreUseCase,
     private val loadGenresUseCase: LoadGenresUseCase,
     private val saveGenreUseCase: SaveGenreUseCase,
     private val clearSelectedGenreUseCase: ClearSelectedGenreUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
-        FiltersViewState()
+        FiltersViewState(
+            selectedGenre = getSelectedGenreUseCase(),
+        )
     )
     val state = _state.asStateFlow()
 
