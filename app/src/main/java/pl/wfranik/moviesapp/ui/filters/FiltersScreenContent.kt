@@ -8,17 +8,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import pl.wfranik.moviesapp.R
 import pl.wfranik.moviesapp.domain.model.Genre
 import pl.wfranik.moviesapp.ui.common.components.EmptyListContent
 import pl.wfranik.moviesapp.ui.common.components.ErrorContent
@@ -26,6 +34,7 @@ import pl.wfranik.moviesapp.ui.common.components.ErrorSnackbarHost
 import pl.wfranik.moviesapp.ui.common.components.LoadingContent
 import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
 import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
+import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnBackClicked
 import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnRetryClicked
 
 @Composable
@@ -39,6 +48,9 @@ internal fun FiltersScreenContent(
         modifier = modifier,
         snackbarHost = {
             ErrorSnackbarHost(snackbarHostState = snackbarHostState)
+        },
+        topBar = {
+            FiltersTopAppBar(onViewAction = onViewAction)
         }
     ) { innerPadding ->
         Box(modifier = modifier.padding(innerPadding)) {
@@ -58,6 +70,33 @@ internal fun FiltersScreenContent(
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FiltersTopAppBar(
+    modifier: Modifier = Modifier,
+    onViewAction: (FiltersViewAction) -> Unit
+) {
+    TopAppBar(
+        modifier = modifier,
+        title = {
+            Text(
+                text = stringResource(R.string.genres_screen_title),
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+        },
+        navigationIcon = {
+            IconButton(onClick = { onViewAction(OnBackClicked) }) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                    contentDescription = "Back"
+                )
+            }
+        }
+    )
 }
 
 @Composable
@@ -96,6 +135,14 @@ fun GenreItem(
                 color = Color.Black
             )
         }
+    }
+}
+
+@DefaultPreviews
+@Composable
+private fun PreviewTopAppBar() {
+    MoviesAppTheme {
+        FiltersTopAppBar {}
     }
 }
 

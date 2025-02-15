@@ -10,9 +10,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import pl.wfranik.moviesapp.domain.LoadGenresUseCase
+import pl.wfranik.moviesapp.domain.model.Genre
 import pl.wfranik.moviesapp.extensions.EventsChannel
 import pl.wfranik.moviesapp.extensions.mutate
-import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnChangeFiltersClicked
+import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnBackClicked
 import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnGenreClicked
 import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnRetryClicked
 import timber.log.Timber
@@ -38,12 +39,17 @@ class FiltersViewModel @Inject constructor(
 
     fun onViewAction(viewEvent: FiltersViewAction) = viewModelScope.launch {
         when (viewEvent) {
-            OnChangeFiltersClicked -> _event.send(FiltersViewEvent.OpenFiltersScreen)
-            is OnGenreClicked -> _event.send(FiltersViewEvent.OpenMovieDetails(viewEvent.genre.id))
+            OnBackClicked -> _event.send(FiltersViewEvent.NavigateBack)
+            is OnGenreClicked -> onGenreClicked(viewEvent.genre)
             OnRetryClicked -> {
                 loadMovies()
             }
         }
+    }
+
+    private fun onGenreClicked(genre: Genre) = viewModelScope.launch {
+        // todo save genre
+        _event.send(FiltersViewEvent.NavigateBack)
     }
 
     private fun loadMovies() = viewModelScope.launch {

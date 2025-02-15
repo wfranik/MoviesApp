@@ -6,13 +6,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import pl.wfranik.moviesapp.extensions.observeAsEvents
-import pl.wfranik.moviesapp.ui.filters.FiltersViewEvent.OpenFiltersScreen
-import pl.wfranik.moviesapp.ui.filters.FiltersViewEvent.OpenMovieDetails
+import pl.wfranik.moviesapp.ui.filters.FiltersViewEvent.NavigateBack
 import pl.wfranik.moviesapp.ui.filters.FiltersViewEvent.ShowError
 
 @Composable
@@ -27,8 +26,10 @@ fun FiltersScreen(
 
     viewModel.event.observeAsEvents { event ->
         when (event) {
-            is OpenFiltersScreen -> {}
-            is OpenMovieDetails -> {}
+            is NavigateBack -> {
+                navController.navigateUp()
+            }
+
             is ShowError -> coroutineScope.launch { snackbarHostState.showSnackbar(event.textLabel.invoke(context)) }
         }
     }
