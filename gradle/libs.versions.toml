@@ -37,7 +37,8 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
-coil-network = { module = "io.coil-kt.coil3:coil-network-ktor2", version.ref = "coil" }
+#coil-network = { module = "io.coil-kt.coil3:coil-network-ktor2", version.ref = "coil" }
+coil-network = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
 hilt-dagger-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-dagger-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
