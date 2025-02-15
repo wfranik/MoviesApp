@@ -3,6 +3,7 @@ package pl.wfranik.moviesapp.api
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import pl.wfranik.moviesapp.api.model.GenresResponseDTO
 import pl.wfranik.moviesapp.api.model.MovieDTO
 import pl.wfranik.moviesapp.api.model.PageDTO
@@ -16,6 +17,12 @@ class TmdbServiceImpl @Inject constructor(
 
     override suspend fun getPopularMoviesForDiscovery() = client
         .get("discover/movie")
+        .body<PageDTO<MovieDTO>>()
+
+    override suspend fun getFilteredMoviesForDiscovery(genreId: Int) = client
+        .get("discover/movie") {
+            parameter("with_genres", genreId)
+        }
         .body<PageDTO<MovieDTO>>()
 
     override suspend fun getGenres() = client

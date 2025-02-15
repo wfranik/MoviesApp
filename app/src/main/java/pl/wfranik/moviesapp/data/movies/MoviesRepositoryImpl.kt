@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.data
+package pl.wfranik.moviesapp.data.movies
 
 import pl.wfranik.moviesapp.api.TmdbService
 import pl.wfranik.moviesapp.domain.model.Genre
@@ -19,11 +19,12 @@ class MoviesRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getGenres(): Result<List<Genre>> = runCatching {
-        tmdbService.getGenres().genres.map { genre ->
-            Genre(
-                id = genre.id,
-                name = genre.name
+    override suspend fun getFilteredMovies(genre: Genre): Result<List<Movie>> = runCatching {
+        tmdbService.getFilteredMoviesForDiscovery(genreId = genre.id).resultList.map { movie ->
+            Movie(
+                id = movie.id,
+                title = movie.title,
+                imageUrl = movie.posterResourceName ?: ""
             )
         }
     }

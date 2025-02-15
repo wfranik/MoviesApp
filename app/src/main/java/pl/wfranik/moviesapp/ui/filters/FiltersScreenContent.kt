@@ -34,6 +34,8 @@ import pl.wfranik.moviesapp.ui.common.components.ErrorSnackbarHost
 import pl.wfranik.moviesapp.ui.common.components.LoadingContent
 import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
 import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
+import pl.wfranik.moviesapp.ui.common.utils.TextLabel
+import pl.wfranik.moviesapp.ui.common.utils.getText
 import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnBackClicked
 import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnRetryClicked
 
@@ -128,7 +130,7 @@ fun GenreItem(
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = genre.name,
+                text = genre.name.getText(),
                 modifier = Modifier.padding(16.dp),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
@@ -151,7 +153,7 @@ private fun PreviewTopAppBar() {
 private fun PreviewGenreItem() {
     MoviesAppTheme {
         GenreItem(
-            genre = Genre(1, "Action"),
+            genre = Genre(1, TextLabel("Action")),
             onGenreClick = { }
         )
     }
@@ -163,25 +165,26 @@ private fun PreviewGenresList() {
     MoviesAppTheme {
         GenresList(
             genres = listOf(
-                Genre(1, "Action"),
-                Genre(2, "Comedy"),
-                Genre(3, "Drama"),
-                Genre(4, "Horror"),
-                Genre(5, "Thriller"),
-                Genre(6, "Sci-Fi"),
-                Genre(7, "Fantasy"),
-                Genre(8, "Adventure"),
-                Genre(9, "Animation"),
-                Genre(10, "Family"),
-                Genre(11, "Romance"),
-                Genre(12, "Mystery"),
-                Genre(13, "Crime"),
-                Genre(14, "Documentary"),
-                Genre(15, "Music"),
-                Genre(16, "History"),
-                Genre(17, "War"),
-                Genre(18, "Western"),
-                Genre(19, "TV Movie")
+                Genre.DEFAULT,
+                Genre(1, TextLabel("Action")),
+                Genre(2, TextLabel("Comedy")),
+                Genre(3, TextLabel("Drama")),
+                Genre(4, TextLabel("Horror")),
+                Genre(5, TextLabel("Thriller")),
+                Genre(6, TextLabel("Sci-Fi")),
+                Genre(7, TextLabel("Fantasy")),
+                Genre(8, TextLabel("Adventure")),
+                Genre(9, TextLabel("Animation")),
+                Genre(10, TextLabel("Family")),
+                Genre(11, TextLabel("Romance")),
+                Genre(12, TextLabel("Mystery")),
+                Genre(13, TextLabel("Crime")),
+                Genre(14, TextLabel("Documentary")),
+                Genre(15, TextLabel("Music")),
+                Genre(16, TextLabel("History")),
+                Genre(17, TextLabel("War")),
+                Genre(18, TextLabel("Western")),
+                Genre(19, TextLabel("TV Movie"))
             ),
             onGenreClick = { }
         )

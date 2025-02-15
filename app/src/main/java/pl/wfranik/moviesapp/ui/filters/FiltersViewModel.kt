@@ -1,6 +1,5 @@
 package pl.wfranik.moviesapp.ui.filters
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,7 +8,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import pl.wfranik.moviesapp.domain.ClearSelectedGenreUseCase
 import pl.wfranik.moviesapp.domain.LoadGenresUseCase
+import pl.wfranik.moviesapp.domain.SaveGenreUseCase
 import pl.wfranik.moviesapp.domain.model.Genre
 import pl.wfranik.moviesapp.extensions.EventsChannel
 import pl.wfranik.moviesapp.extensions.mutate
@@ -22,7 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class FiltersViewModel @Inject constructor(
     private val loadGenresUseCase: LoadGenresUseCase,
-    savedStateHandle: SavedStateHandle,
+    private val saveGenreUseCase: SaveGenreUseCase,
+    private val clearSelectedGenreUseCase: ClearSelectedGenreUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
@@ -48,7 +50,11 @@ class FiltersViewModel @Inject constructor(
     }
 
     private fun onGenreClicked(genre: Genre) = viewModelScope.launch {
-        // todo save genre
+        if (genre.id == Genre.DEFAULT.id) {
+            clearSelectedGenreUseCase()
+        } else {
+            saveGenreUseCase(genre)
+        }
         _event.send(FiltersViewEvent.NavigateBack)
     }
 
