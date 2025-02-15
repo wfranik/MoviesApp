@@ -11,6 +11,7 @@ hilt-navigation-compose = "1.2.0"
 junit = "4.13.2"
 junit-version = "1.2.1"
 kotlin = "2.0.10"
+kotlin-coroutines = "1.10.1"
 ksp = "2.0.10-1.0.24"
 kotlinx-serialization = "1.6.2"
 ktlint-plugin = "12.1.1"
@@ -18,6 +19,7 @@ ktor = "2.3.7"
 mockk = "1.13.1"
 navigation-compose = "2.8.7"
 timber = "5.0.1"
+splash-screen = "1.0.1"
 turbine = "1.1.0"
 
 [libraries]
@@ -39,6 +41,8 @@ androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network = { module = "io.coil-kt.coil3:coil-network-ktor2", version.ref = "coil" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 hilt-dagger-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-dagger-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
@@ -52,6 +56,8 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "splash-screen" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

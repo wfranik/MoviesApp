@@ -34,6 +34,8 @@ import pl.wfranik.moviesapp.ui.common.components.ErrorSnackbarHost
 import pl.wfranik.moviesapp.ui.common.components.ImagePathBuilder
 import pl.wfranik.moviesapp.ui.common.components.LoadingContent
 import pl.wfranik.moviesapp.ui.common.components.PlaceholderComponent
+import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
+import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnRetryClicked
 
 @Composable
@@ -127,3 +129,59 @@ fun MovieItem(
     }
 }
 
+@DefaultPreviews
+@Composable
+private fun PreviewGenreItem() {
+    MoviesAppTheme {
+        MovieItem(
+            movie = Movie(
+                id = 1,
+                title = "Movie Title",
+                imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
+            ),
+            onMovieClick = { }
+        )
+    }
+}
+
+@DefaultPreviews
+@Composable
+private fun PreviewGenresList() {
+    MoviesAppTheme {
+        MoviesList(
+            movies = listOf(
+                Movie(
+                    id = 1,
+                    title = "Movie Title",
+                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
+                ),
+                Movie(
+                    id = 2,
+                    title = "Movie Title",
+                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
+                ),
+                Movie(
+                    id = 3,
+                    title = "Movie Title",
+                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
+                ),
+                Movie(
+                    id = 4,
+                    title = "Movie Title",
+                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
+                ),
+                Movie(
+                    id = 5,
+                    title = "Movie Title",
+                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
+                ),
+                Movie(
+                    id = 6,
+                    title = "Movie Title",
+                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
+                ),
+            ),
+            onMovieClick = { }
+        )
+    }
+}

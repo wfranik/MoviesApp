@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.home
+package pl.wfranik.moviesapp.ui.filters
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -6,20 +6,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import pl.wfranik.moviesapp.extensions.observeAsEvents
-import pl.wfranik.moviesapp.ui.common.navigation.Screen
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.OpenFiltersScreen
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.OpenMovieDetails
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.ShowError
+import pl.wfranik.moviesapp.ui.filters.FiltersViewEvent.OpenFiltersScreen
+import pl.wfranik.moviesapp.ui.filters.FiltersViewEvent.OpenMovieDetails
+import pl.wfranik.moviesapp.ui.filters.FiltersViewEvent.ShowError
 
 @Composable
-fun HomeScreen(
+fun FiltersScreen(
     navController: NavController,
-    viewModel: HomeViewModel = hiltViewModel(),
+    viewModel: FiltersViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
@@ -28,19 +27,13 @@ fun HomeScreen(
 
     viewModel.event.observeAsEvents { event ->
         when (event) {
-            is OpenFiltersScreen -> {
-                navController.navigate(Screen.Filters)
-            }
-
-            is OpenMovieDetails -> {
-                navController.navigate(Screen.MovieDetails(event.movieId))
-            }
-
+            is OpenFiltersScreen -> {}
+            is OpenMovieDetails -> {}
             is ShowError -> coroutineScope.launch { snackbarHostState.showSnackbar(event.textLabel.invoke(context)) }
         }
     }
 
-    HomeScreenContent(
+    FiltersScreenContent(
         state = state,
         onViewAction = viewModel::onViewAction,
         snackbarHostState = snackbarHostState

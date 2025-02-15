@@ -20,7 +20,7 @@ class MoviesRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getGenres(): Result<List<Genre>> = runCatching {
-        tmdbService.getGenres().resultList.map { genre ->
+        tmdbService.getGenres().genres.map { genre ->
             Genre(
                 id = genre.id,
                 name = genre.name
