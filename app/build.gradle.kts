@@ -1,9 +1,16 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.serialization)
+}
+
+val localProperties = Properties().apply {
+    load(project.rootProject.file("local.properties").reader())
 }
 
 android {
@@ -18,6 +25,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY_VALUE", localProperties.getProperty("API_KEY_VALUE"))
     }
 
     buildTypes {
@@ -35,6 +44,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     packaging {
         resources {
@@ -54,10 +64,12 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.coil.network)
     implementation(libs.coil.compose)
+    implementation(libs.bundles.ktor)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.dagger.android)
     ksp(libs.hilt.dagger.android.compiler)
     implementation(libs.timber)
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

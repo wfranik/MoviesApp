@@ -31,6 +31,7 @@ import pl.wfranik.moviesapp.ui.components.AsyncImage
 import pl.wfranik.moviesapp.ui.components.EmptyListContent
 import pl.wfranik.moviesapp.ui.components.ErrorContent
 import pl.wfranik.moviesapp.ui.components.ErrorSnackbarHost
+import pl.wfranik.moviesapp.ui.components.ImagePathBuilder
 import pl.wfranik.moviesapp.ui.components.LoadingContent
 import pl.wfranik.moviesapp.ui.components.PlaceholderComponent
 
@@ -106,7 +107,9 @@ fun MovieItem(
                 modifier = Modifier
                     .height(180.dp)
                     .fillMaxWidth(),
-                imageUrl = movie.imageUrl,
+                imageUrl = ImagePathBuilder()
+                    .withResource(movie.imageUrl)
+                    .withSize(ImagePathBuilder.BackdropSize.W1280).build(),
                 contentScale = ContentScale.Crop,
                 loadingContent = {
                     PlaceholderComponent()
