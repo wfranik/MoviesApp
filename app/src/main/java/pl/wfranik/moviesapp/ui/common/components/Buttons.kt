@@ -46,7 +46,7 @@ fun PrimaryButton(
     ) {
         Text(
             text = text.getText(),
-//            style = MaterialTheme.typo.button,
+            style = MaterialTheme.typography.titleMedium,
             textAlign = textAlign
         )
     }
@@ -98,6 +98,7 @@ fun OutlinedButton(
     ) {
         Text(
             text = text.getText(),
+            style = MaterialTheme.typography.titleMedium,
             textAlign = textAlign
         )
     }
