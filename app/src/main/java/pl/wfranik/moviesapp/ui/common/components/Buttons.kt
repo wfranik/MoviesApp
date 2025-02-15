@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.components
+package pl.wfranik.moviesapp.ui.common.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,11 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import pl.wfranik.moviesapp.ui.preview.DefaultPreviews
-import pl.wfranik.moviesapp.ui.theme.MoviesAppTheme
-import pl.wfranik.moviesapp.ui.theme.dimension
-import pl.wfranik.moviesapp.ui.utils.TextLabel
-import pl.wfranik.moviesapp.ui.utils.getText
+import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
+import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
+import pl.wfranik.moviesapp.ui.common.theme.dimension
+import pl.wfranik.moviesapp.ui.common.utils.TextLabel
+import pl.wfranik.moviesapp.ui.common.utils.getText
 
 @Composable
 fun primaryButtonColors(): ButtonColors = ButtonDefaults.buttonColors(

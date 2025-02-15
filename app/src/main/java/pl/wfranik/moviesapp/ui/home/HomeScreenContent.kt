@@ -27,13 +27,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pl.wfranik.moviesapp.R
 import pl.wfranik.moviesapp.domain.model.Movie
-import pl.wfranik.moviesapp.ui.components.AsyncImage
-import pl.wfranik.moviesapp.ui.components.EmptyListContent
-import pl.wfranik.moviesapp.ui.components.ErrorContent
-import pl.wfranik.moviesapp.ui.components.ErrorSnackbarHost
-import pl.wfranik.moviesapp.ui.components.ImagePathBuilder
-import pl.wfranik.moviesapp.ui.components.LoadingContent
-import pl.wfranik.moviesapp.ui.components.PlaceholderComponent
+import pl.wfranik.moviesapp.ui.common.components.AsyncImage
+import pl.wfranik.moviesapp.ui.common.components.EmptyListContent
+import pl.wfranik.moviesapp.ui.common.components.ErrorContent
+import pl.wfranik.moviesapp.ui.common.components.ErrorSnackbarHost
+import pl.wfranik.moviesapp.ui.common.components.ImagePathBuilder
+import pl.wfranik.moviesapp.ui.common.components.LoadingContent
+import pl.wfranik.moviesapp.ui.common.components.PlaceholderComponent
+import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnRetryClicked
 
 @Composable
 internal fun HomeScreenContent(
@@ -60,7 +61,7 @@ internal fun HomeScreenContent(
                 state.isLoading -> LoadingContent()
 
                 state.isError -> ErrorContent(
-                    onRetry = { onViewAction(HomeViewAction.OnRetryClicked) }
+                    onRetry = { onViewAction(OnRetryClicked) }
                 )
 
                 state.movies.isEmpty() -> EmptyListContent()

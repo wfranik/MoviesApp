@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.preview
+package pl.wfranik.moviesapp.ui.common.preview
 
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Preview

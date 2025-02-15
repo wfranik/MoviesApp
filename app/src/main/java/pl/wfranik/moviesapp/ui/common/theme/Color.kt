@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.theme
+package pl.wfranik.moviesapp.ui.common.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import dagger.hilt.android.AndroidEntryPoint
 import pl.wfranik.moviesapp.ui.home.HomeScreen
-import pl.wfranik.moviesapp.ui.theme.MoviesAppTheme
+import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.utils
+package pl.wfranik.moviesapp.ui.common.utils
 
 import android.content.Context
 import androidx.annotation.PluralsRes
@@ -7,6 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.platform.LocalContext
+import pl.wfranik.moviesapp.ui.common.utils.TextLabel.Companion
+import pl.wfranik.moviesapp.ui.common.utils.TextLabel.PluralTextLabel.PluralStringParams
 
 @Stable
 sealed interface TextLabel {
@@ -75,7 +77,7 @@ sealed interface TextLabel {
 
         operator fun invoke(text: String) = StringTextLabel(text)
 
-        operator fun invoke(pluralStringParams: PluralTextLabel.PluralStringParams) =
+        operator fun invoke(pluralStringParams: PluralStringParams) =
             PluralTextLabel(pluralStringParams)
     }
 }

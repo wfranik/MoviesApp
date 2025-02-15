@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.components
+package pl.wfranik.moviesapp.ui.common.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,8 +9,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import pl.wfranik.moviesapp.R
-import pl.wfranik.moviesapp.ui.preview.DefaultPreviews
-import pl.wfranik.moviesapp.ui.theme.MoviesAppTheme
+import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
+import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
 
 @Composable
 fun EmptyListContent(

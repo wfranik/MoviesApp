@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.components
+package pl.wfranik.moviesapp.ui.common.components
 
 class ImagePathBuilder {
 
