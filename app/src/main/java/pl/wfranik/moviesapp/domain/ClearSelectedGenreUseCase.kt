@@ -1,6 +1,6 @@
 package pl.wfranik.moviesapp.domain
 
-import pl.wfranik.moviesapp.data.genre.GenresRepository
+import pl.wfranik.data_contract.GenresRepository
 import javax.inject.Inject
 
 class ClearSelectedGenreUseCase @Inject constructor(

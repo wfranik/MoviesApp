@@ -4,11 +4,11 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
+import pl.wfranik.data_contract.MoviesRepository
 import pl.wfranik.domain_models.Genre
 import pl.wfranik.domain_models.Movie
 import pl.wfranik.domain_models.MovieDetails
 import pl.wfranik.domain_models.MovieWithDetails
-import pl.wfranik.moviesapp.data.movies.MoviesRepository
 import javax.inject.Inject
 
 class LoadMoviesWithDetailsUseCase @Inject constructor(

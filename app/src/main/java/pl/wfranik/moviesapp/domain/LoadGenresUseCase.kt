@@ -2,8 +2,8 @@ package pl.wfranik.moviesapp.domain
 
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.withContext
+import pl.wfranik.data_contract.GenresRepository
 import pl.wfranik.domain_models.Genre
-import pl.wfranik.moviesapp.data.genre.GenresRepository
 import javax.inject.Inject
 
 class LoadGenresUseCase @Inject constructor(
