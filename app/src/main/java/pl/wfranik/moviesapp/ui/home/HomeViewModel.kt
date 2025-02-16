@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import pl.wfranik.moviesapp.domain.MoviesContentManager
 import pl.wfranik.moviesapp.domain.model.LoadingState
-import pl.wfranik.moviesapp.domain.model.Movie
 import pl.wfranik.moviesapp.extensions.EventsChannel
 import pl.wfranik.moviesapp.extensions.mutate
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnChangeFiltersClicked
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnMovieClicked
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnRetryClicked
+import pl.wfranik.moviesapp.ui.home.model.MovieListItem
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor(
     fun onViewAction(viewEvent: HomeViewAction) = viewModelScope.launch {
         when (viewEvent) {
             OnChangeFiltersClicked -> _event.send(HomeViewEvent.OpenFiltersScreen)
-            is OnMovieClicked -> _event.send(HomeViewEvent.OpenMovieDetails(viewEvent.movie.id))
+            is OnMovieClicked -> _event.send(HomeViewEvent.OpenMovieDetails(viewEvent.movieListItem.id))
             OnRetryClicked -> moviesContentManager.refresh()
         }
     }
@@ -54,7 +54,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun successState(movies: List<Movie>) {
+    private fun successState(movies: List<MovieListItem>) {
         _state.mutate {
             copy(
                 isLoading = false,

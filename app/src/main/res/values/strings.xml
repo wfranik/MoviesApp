@@ -11,4 +11,8 @@
 
     <string name="genres_screen_title">Genres</string>
     <string name="genre_default_option_label">All</string>
+
+    <string name="movie_rating_label">Rating: %s</string>
+    <string name="movie_revenue_label">Revenue: %s</string>
+    <string name="movie_budget_label">Budget: %s</string>
 </resources>

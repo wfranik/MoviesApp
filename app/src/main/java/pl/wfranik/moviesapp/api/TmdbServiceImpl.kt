@@ -1,5 +1,6 @@
 package pl.wfranik.moviesapp.api
 
+import com.iteo.api.model.MovieDetailsDTO
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -24,6 +25,10 @@ class TmdbServiceImpl @Inject constructor(
             parameter("with_genres", genreId)
         }
         .body<PageDTO<MovieDTO>>()
+
+    override suspend fun getMovieDetails(movieId: Int) = client
+        .get("movie/$movieId")
+        .body<MovieDetailsDTO>()
 
     override suspend fun getGenres() = client
         .get("genre/movie/list")

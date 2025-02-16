@@ -1,7 +1,9 @@
 package pl.wfranik.moviesapp.ui.home
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,21 +23,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import pl.wfranik.moviesapp.R
-import pl.wfranik.moviesapp.domain.model.Movie
 import pl.wfranik.moviesapp.ui.common.components.AsyncImage
 import pl.wfranik.moviesapp.ui.common.components.EmptyListContent
 import pl.wfranik.moviesapp.ui.common.components.ErrorContent
 import pl.wfranik.moviesapp.ui.common.components.ErrorSnackbarHost
-import pl.wfranik.moviesapp.ui.common.components.ImagePathBuilder
 import pl.wfranik.moviesapp.ui.common.components.LoadingContent
 import pl.wfranik.moviesapp.ui.common.components.PlaceholderComponent
 import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
 import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnRetryClicked
+import pl.wfranik.moviesapp.ui.home.model.MovieListItem
 
 @Composable
 internal fun HomeScreenContent(
@@ -78,8 +80,8 @@ internal fun HomeScreenContent(
 
 @Composable
 fun MoviesList(
-    movies: List<Movie>,
-    onMovieClick: (Movie) -> Unit
+    movies: List<MovieListItem>,
+    onMovieClick: (MovieListItem) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -95,8 +97,8 @@ fun MoviesList(
 
 @Composable
 fun MovieItem(
-    movie: Movie,
-    onMovieClick: (Movie) -> Unit
+    movie: MovieListItem,
+    onMovieClick: (MovieListItem) -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(12.dp),
@@ -109,22 +111,48 @@ fun MovieItem(
                 modifier = Modifier
                     .height(180.dp)
                     .fillMaxWidth(),
-                imageUrl = ImagePathBuilder()
-                    .withResource(movie.imageUrl)
-                    .withSize(ImagePathBuilder.BackdropSize.W1280).build(),
+                imageUrl = movie.imageUrl,
                 contentScale = ContentScale.Crop,
                 loadingContent = {
                     PlaceholderComponent()
                 }
             )
-            Text(
-                text = movie.title,
+            Column(
                 modifier = Modifier.padding(8.dp),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-            )
+            ) {
+                Text(
+                    text = movie.title,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+
+                listOf(
+                    R.string.movie_rating_label to movie.rating.toString(),
+                    R.string.movie_revenue_label to movie.revenue,
+                    R.string.movie_budget_label to movie.budget,
+                ).forEach { (labelResId, value) ->
+                    MovieInfoLabel(
+                        labelResId = labelResId,
+                        value = value
+                    )
+                }
+            }
         }
     }
+}
+
+@Composable
+private fun MovieInfoLabel(
+    modifier: Modifier = Modifier,
+    @StringRes labelResId: Int,
+    value: String
+) {
+    Text(
+        modifier = modifier,
+        text = stringResource(labelResId, value),
+        fontSize = 14.sp,
+    )
 }
 
 @DefaultPreviews
@@ -132,11 +160,7 @@ fun MovieItem(
 private fun PreviewGenreItem() {
     MoviesAppTheme {
         MovieItem(
-            movie = Movie(
-                id = 1,
-                title = "Movie Title",
-                imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
-            ),
+            movie = MovieListItem.previewMovieListItem,
             onMovieClick = { }
         )
     }
@@ -147,38 +171,7 @@ private fun PreviewGenreItem() {
 private fun PreviewGenresList() {
     MoviesAppTheme {
         MoviesList(
-            movies = listOf(
-                Movie(
-                    id = 1,
-                    title = "Movie Title",
-                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
-                ),
-                Movie(
-                    id = 2,
-                    title = "Movie Title",
-                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
-                ),
-                Movie(
-                    id = 3,
-                    title = "Movie Title",
-                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
-                ),
-                Movie(
-                    id = 4,
-                    title = "Movie Title",
-                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
-                ),
-                Movie(
-                    id = 5,
-                    title = "Movie Title",
-                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
-                ),
-                Movie(
-                    id = 6,
-                    title = "Movie Title",
-                    imageUrl = "https://image.tmdb.org/t/p/w1280/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg",
-                ),
-            ),
+            movies = MovieListItem.previewMovieListItemList,
             onMovieClick = { }
         )
     }

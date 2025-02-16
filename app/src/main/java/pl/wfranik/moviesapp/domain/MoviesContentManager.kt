@@ -10,32 +10,33 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.retry
 import pl.wfranik.moviesapp.data.genre.GenresRepository
-import pl.wfranik.moviesapp.data.movies.MoviesRepository
-import pl.wfranik.moviesapp.domain.model.Genre
 import pl.wfranik.moviesapp.domain.model.LoadingState
-import pl.wfranik.moviesapp.domain.model.Movie
+import pl.wfranik.moviesapp.ui.home.model.MovieListItem
+import pl.wfranik.moviesapp.ui.home.model.MovieListItemMapper
 import timber.log.Timber
 import javax.inject.Inject
 
 class MoviesContentManager @Inject constructor(
-    private val moviesRepository: MoviesRepository,
+    private val loadMoviesWithDetailsUseCase: LoadMoviesWithDetailsUseCase,
+    private val movieListItemMapper: MovieListItemMapper,
     genresRepository: GenresRepository
 ) {
 
     private val refreshTrigger = MutableSharedFlow<Unit>(replay = 0)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val itemsFlow: Flow<LoadingState<List<Movie>>> =
+    val itemsFlow: Flow<LoadingState<List<MovieListItem>>> =
         combine(
             genresRepository.observeSelectedGenre(),
             refreshTrigger.onStart { emit(Unit) }
-        ) { query, _ ->
-            query
-        }.flatMapLatest { query ->
+        ) { selectedGenre, _ ->
+            selectedGenre
+        }.flatMapLatest { selectedGenre ->
             flow {
                 emit(LoadingState.Loading)
-                val items = fetchItemsFromApi(query)
-                emit(LoadingState.Success(items))
+                val movies: List<MovieListItem> = loadMoviesWithDetailsUseCase(selectedGenre)
+                    .map { movieListItemMapper(it) }
+                emit(LoadingState.Success(movies))
             }.retry(RETRY_ATTEMPTS) { e ->
                 Timber.d("Retry due to: ${e.message}")
                 e is Exception // Retry only if it's an exception
@@ -43,14 +44,6 @@ class MoviesContentManager @Inject constructor(
                 emit(LoadingState.Error(throwable))
             }
         }
-
-    private suspend fun fetchItemsFromApi(selectedGenre: Genre): List<Movie> {
-        return if (selectedGenre.id == Genre.DEFAULT.id) {
-            moviesRepository.getMovies().getOrThrow()
-        } else {
-            moviesRepository.getFilteredMovies(selectedGenre).getOrThrow()
-        }
-    }
 
     suspend fun refresh() {
         refreshTrigger.emit(Unit)
