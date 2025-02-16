@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.domain
+package pl.wfranik.domain_usecase
 
 import pl.wfranik.data_contract.GenresRepository
 import javax.inject.Inject

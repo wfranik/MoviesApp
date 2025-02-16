@@ -9,19 +9,21 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import pl.wfranik.domain_models.LoadingState
-import pl.wfranik.moviesapp.domain.MoviesContentManager
+import pl.wfranik.domain_usecase.MoviesContentManager
 import pl.wfranik.moviesapp.extensions.EventsChannel
 import pl.wfranik.moviesapp.extensions.mutate
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnChangeFiltersClicked
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnMovieClicked
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnRetryClicked
 import pl.wfranik.moviesapp.ui.home.model.MovieListItem
+import pl.wfranik.moviesapp.ui.home.model.MovieListItemMapper
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val moviesContentManager: MoviesContentManager,
+    private val movieListItemMapper: MovieListItemMapper
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(
@@ -48,7 +50,7 @@ class HomeViewModel @Inject constructor(
         moviesContentManager.itemsFlow.collect { state ->
             when (state) {
                 is LoadingState.Loading -> loadingState()
-                is LoadingState.Success -> successState(state.data)
+                is LoadingState.Success -> successState(state.data.map { movieListItemMapper(it) })
                 is LoadingState.Error -> errorState(state.throwable)
             }
         }

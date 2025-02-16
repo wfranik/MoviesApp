@@ -53,6 +53,7 @@ android {
 
 dependencies {
     implementation(project(":domain-models"))
+    implementation(project(":domain-usecase"))
     implementation(project(":ui-common"))
     implementation(project(":data-contract"))
     implementation(project(":data-implementation"))

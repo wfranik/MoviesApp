@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.domain
+package pl.wfranik.domain_usecase
 
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.async

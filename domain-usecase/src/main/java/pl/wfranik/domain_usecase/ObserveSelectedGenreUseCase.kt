@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.domain
+package pl.wfranik.domain_usecase
 
 import kotlinx.coroutines.flow.Flow
 import pl.wfranik.data_contract.GenresRepository

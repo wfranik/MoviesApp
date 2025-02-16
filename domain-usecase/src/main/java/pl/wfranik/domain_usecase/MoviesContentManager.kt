@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.domain
+package pl.wfranik.domain_usecase
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -11,21 +11,19 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.retry
 import pl.wfranik.data_contract.GenresRepository
 import pl.wfranik.domain_models.LoadingState
-import pl.wfranik.moviesapp.ui.home.model.MovieListItem
-import pl.wfranik.moviesapp.ui.home.model.MovieListItemMapper
+import pl.wfranik.domain_models.MovieWithDetails
 import timber.log.Timber
 import javax.inject.Inject
 
 class MoviesContentManager @Inject constructor(
     private val loadMoviesWithDetailsUseCase: LoadMoviesWithDetailsUseCase,
-    private val movieListItemMapper: MovieListItemMapper,
     genresRepository: GenresRepository
 ) {
 
     private val refreshTrigger = MutableSharedFlow<Unit>(replay = 0)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val itemsFlow: Flow<LoadingState<List<MovieListItem>>> =
+    val itemsFlow: Flow<LoadingState<List<MovieWithDetails>>> =
         combine(
             genresRepository.observeSelectedGenre(),
             refreshTrigger.onStart { emit(Unit) }
@@ -34,8 +32,7 @@ class MoviesContentManager @Inject constructor(
         }.flatMapLatest { selectedGenre ->
             flow {
                 emit(LoadingState.Loading)
-                val movies: List<MovieListItem> = loadMoviesWithDetailsUseCase(selectedGenre)
-                    .map { movieListItemMapper(it) }
+                val movies: List<MovieWithDetails> = loadMoviesWithDetailsUseCase(selectedGenre)
                 emit(LoadingState.Success(movies))
             }.retry(RETRY_ATTEMPTS) { e ->
                 Timber.d("Retry due to: ${e.message}")

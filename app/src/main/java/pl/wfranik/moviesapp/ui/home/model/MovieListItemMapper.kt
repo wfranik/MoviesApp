@@ -1,8 +1,9 @@
 package pl.wfranik.moviesapp.ui.home.model
 
+import pl.wfranik.moviesapp.ui.common.components.ImagePathBuilder
+import pl.wfranik.moviesapp.ui.common.components.ImagePathBuilder.BackdropSize.W1280
 import pl.wfranik.domain_models.MovieWithDetails
 import pl.wfranik.moviesapp.extensions.formatCurrency
-import pl.wfranik.moviesapp.ui.common.components.ImagePathBuilder
 import javax.inject.Inject
 
 class MovieListItemMapper @Inject constructor() {
@@ -14,7 +15,7 @@ class MovieListItemMapper @Inject constructor() {
                 title = movie.title,
                 imageUrl = ImagePathBuilder()
                     .withResource(movie.imageUrl)
-                    .withSize(ImagePathBuilder.BackdropSize.W1280)
+                    .withSize(W1280)
                     .build(),
                 rating = movie.rating,
                 revenue = movieDetails.revenue.formatCurrency(),
