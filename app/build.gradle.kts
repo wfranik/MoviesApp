@@ -62,6 +62,7 @@ dependencies {
     implementation(project(":data-implementation"))
     implementation(project(":datasource-api-contract"))
     implementation(project(":datasource-api-implementation"))
+    implementation(project(":di"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
