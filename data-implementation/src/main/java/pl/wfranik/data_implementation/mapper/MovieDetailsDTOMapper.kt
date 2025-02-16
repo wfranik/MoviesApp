@@ -1,6 +1,6 @@
 package pl.wfranik.data_implementation.mapper
 
-import pl.wfranik.api.model.MovieDetailsDTO
+import pl.wfranik.datasource_api_models.MovieDetailsDTO
 import pl.wfranik.domain_models.MovieDetails
 import javax.inject.Inject
 

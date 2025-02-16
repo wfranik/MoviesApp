@@ -36,7 +36,8 @@ dependencies {
 
     implementation(project(":domain-models"))
     implementation(project(":data-contract"))
-    implementation(project(":datasource-api"))
+    implementation(project(":datasource-api-models"))
+    implementation(project(":datasource-api-contract"))
 
     implementation(libs.bundles.ktor)
     implementation(libs.kotlinx.coroutines.core)

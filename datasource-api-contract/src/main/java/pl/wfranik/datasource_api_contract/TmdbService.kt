@@ -1,9 +1,9 @@
-package pl.wfranik.api
+package pl.wfranik.datasource_api_contract
 
-import pl.wfranik.api.model.MovieDetailsDTO
-import pl.wfranik.api.model.GenresResponseDTO
-import pl.wfranik.api.model.MovieDTO
-import pl.wfranik.api.model.PageDTO
+import pl.wfranik.datasource_api_models.GenresResponseDTO
+import pl.wfranik.datasource_api_models.MovieDTO
+import pl.wfranik.datasource_api_models.MovieDetailsDTO
+import pl.wfranik.datasource_api_models.PageDTO
 
 interface TmdbService {
     suspend fun getPopularMoviesForDiscovery(): PageDTO<MovieDTO>

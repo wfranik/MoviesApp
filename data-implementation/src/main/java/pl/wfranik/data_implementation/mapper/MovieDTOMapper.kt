@@ -1,7 +1,7 @@
 package pl.wfranik.data_implementation.mapper
 
+import pl.wfranik.datasource_api_models.MovieDTO
 import pl.wfranik.domain_models.Movie
-import pl.wfranik.api.model.MovieDTO
 import javax.inject.Inject
 
 class MovieDTOMapper @Inject constructor() {

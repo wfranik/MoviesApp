@@ -2,9 +2,9 @@ package pl.wfranik.data_implementation.genre
 
 import kotlinx.coroutines.flow.Flow
 import pl.wfranik.data_contract.GenresRepository
-import pl.wfranik.domain_models.Genre
-import pl.wfranik.api.TmdbService
 import pl.wfranik.data_implementation.movies.GenreInMemoryStore
+import pl.wfranik.datasource_api_contract.TmdbService
+import pl.wfranik.domain_models.Genre
 import javax.inject.Inject
 
 class GenresRepositoryImpl @Inject constructor(

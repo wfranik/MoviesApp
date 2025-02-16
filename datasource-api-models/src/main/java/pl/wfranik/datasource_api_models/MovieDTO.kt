@@ -1,4 +1,4 @@
-package pl.wfranik.api.model
+package pl.wfranik.datasource_api_models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

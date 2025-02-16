@@ -4,14 +4,14 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import pl.wfranik.api.TmdbService
 import pl.wfranik.data_contract.GenresRepository
 import pl.wfranik.data_contract.MoviesRepository
+import pl.wfranik.data_implementation.genre.GenresRepositoryImpl
 import pl.wfranik.data_implementation.mapper.MovieDTOMapper
 import pl.wfranik.data_implementation.mapper.MovieDetailsDTOMapper
 import pl.wfranik.data_implementation.movies.GenreInMemoryStore
 import pl.wfranik.data_implementation.movies.MoviesRepositoryImpl
-import pl.wfranik.data_implementation.genre.GenresRepositoryImpl
+import pl.wfranik.datasource_api_contract.TmdbService
 import javax.inject.Singleton
 
 @Module

@@ -4,10 +4,11 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
-import pl.wfranik.api.model.GenresResponseDTO
-import pl.wfranik.api.model.MovieDTO
-import pl.wfranik.api.model.MovieDetailsDTO
-import pl.wfranik.api.model.PageDTO
+import pl.wfranik.datasource_api_contract.TmdbService
+import pl.wfranik.datasource_api_models.GenresResponseDTO
+import pl.wfranik.datasource_api_models.MovieDTO
+import pl.wfranik.datasource_api_models.MovieDetailsDTO
+import pl.wfranik.datasource_api_models.PageDTO
 import javax.inject.Inject
 
 class TmdbServiceImpl @Inject constructor(
