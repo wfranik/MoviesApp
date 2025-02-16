@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="movie_rating_label">Rating: %s</string>
+    <string name="movie_revenue_label">Revenue: %s</string>
+    <string name="movie_budget_label">Budget: %s</string>
+</resources>

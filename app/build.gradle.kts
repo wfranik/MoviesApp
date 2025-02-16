@@ -25,8 +25,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField("String", "API_KEY_VALUE", localProperties.getProperty("API_KEY_VALUE"))
     }
 
     buildTypes {
@@ -54,6 +52,17 @@ android {
 }
 
 dependencies {
+    implementation(project(":ui-common"))
+    implementation(project(":ui-common-navigation"))
+    implementation(project(":ui-home"))
+    implementation(project(":ui-filters"))
+    implementation(project(":domain-models"))
+    implementation(project(":domain-usecase"))
+    implementation(project(":data-contract"))
+    implementation(project(":data-implementation"))
+    implementation(project(":datasource-api-contract"))
+    implementation(project(":datasource-api-implementation"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(platform(libs.androidx.compose.bom))

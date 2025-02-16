@@ -21,3 +21,14 @@ dependencyResolutionManagement {
 
 rootProject.name = "MoviesApp"
 include(":app")
+include(":data-implementation")
+include(":data-contract")
+include(":domain-models")
+include(":ui-common")
+include(":datasource-api-implementation")
+include(":datasource-api-contract")
+include(":datasource-api-models")
+include(":domain-usecase")
+include(":ui-filters")
+include(":ui-home")
+include(":ui-common-navigation")

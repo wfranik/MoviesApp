@@ -17,10 +17,24 @@ practices and technologies, MoviesApp offers a smooth and engaging user experien
 * **Filter:** Quickly filter movies based on selected genre.
 * **Responsive UI:** Enjoy a consistent and visually appealing experience thanks to Jetpack Compose.
 
+## Architecture
+
+* **MVVM/MVI:** The project follows the MVVM (Model-View-ViewModel) architecture pattern with
+  elements of MVI (Model-View-Intent) to separate concerns and improve testability.
+* **Clean Architecture:** The project follows the principles of Clean Architecture to ensure
+  separation of concerns and maintainability.
+* **Modularization:** The project is structured using a modular architecture to improve code
+  organization and maintainability.
+    * Some modules have a contract and implementation modules. The main reason is the build time.
+      When you change something in the implementation module, the modules that depend on contract
+      module will not be recompiled.
+
 ## Technologies Used
 
 * **Kotlin:** The primary programming language for building the app.
 * **Jetpack Compose:** A modern UI toolkit for building native Android UIs declaratively.
+* **Coroutines:** A powerful and flexible concurrency framework for simplifying code that executes
+  asynchronously.
 * **Ktor:** A powerful and flexible HTTP client for making network requests to the TMDB API.
 * **Hilt:** A dependency injection library for Android that reduces boilerplate and improves code
   maintainability.
@@ -61,11 +75,9 @@ practices and technologies, MoviesApp offers a smooth and engaging user experien
 
 ## Known Issues
 
-1. **No Modularization:** I had an issues during the project setup with modularization which takes
-   me a lot of time. I will try to fix it in the future.
-2. **No Unit Tests:** The project does not contain any unit tests yet. This will be addressed in
+1. **No Unit Tests:** The project does not contain any unit tests yet. This will be addressed in
    future updates.
-3. **No Movie Details:** The movie details screen is not yet implemented. Clicking on a movie will
+2. **No Movie Details:** The movie details screen is not yet implemented. Clicking on a movie will
    display a snackbar with the movie title instead.
 
 ## License

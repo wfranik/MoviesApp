@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="genres_screen_title">Genres</string>
+    <string name="genre_default_option_label">All</string>
+</resources>
