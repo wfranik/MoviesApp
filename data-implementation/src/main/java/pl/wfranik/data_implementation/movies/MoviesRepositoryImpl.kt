@@ -28,8 +28,6 @@ class MoviesRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getMovieDetails(movie: Movie): Result<MovieDetails> = runCatching {
-        tmdbService.getMovieDetails(movieId = movie.id).let { movieDetailsDTO ->
-            movieDetailsDTOMapper(movieDetailsDTO)
-        }
+        movieDetailsDTOMapper(tmdbService.getMovieDetails(movieId = movie.id))
     }
 }
