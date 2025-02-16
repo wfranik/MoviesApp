@@ -32,7 +32,7 @@ class MoviesContentManager @Inject constructor(
         }.flatMapLatest { selectedGenre ->
             flow {
                 emit(LoadingState.Loading)
-                val movies: List<MovieWithDetails> = loadMoviesWithDetailsUseCase(selectedGenre)
+                val movies: List<MovieWithDetails> = loadMoviesWithDetailsUseCase(selectedGenre).getOrThrow()
                 emit(LoadingState.Success(movies))
             }.retry(RETRY_ATTEMPTS) { e ->
                 Timber.d("Retry due to: ${e.message}")

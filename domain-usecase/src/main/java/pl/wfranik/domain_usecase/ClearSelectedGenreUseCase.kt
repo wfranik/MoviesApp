@@ -7,6 +7,6 @@ class ClearSelectedGenreUseCase @Inject constructor(
     private val genresRepository: GenresRepository
 ) {
 
-    suspend operator fun invoke() =
+    suspend operator fun invoke(): Result<Unit> =
         genresRepository.clearSelectedGenre()
 }

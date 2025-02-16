@@ -38,10 +38,18 @@ dependencies {
 
     implementation(project(":domain-models"))
     implementation(project(":data-contract"))
+    implementation(project(":di"))
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.hilt.dagger.android)
     ksp(libs.hilt.dagger.android.compiler)
     implementation(libs.timber)
     implementation(libs.kotlinx.serialization.json)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
