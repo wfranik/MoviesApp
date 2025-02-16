@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.domain.model
+package pl.wfranik.domain_models
 
 data class MovieDetails(
     val id: Int,

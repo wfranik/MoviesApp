@@ -1,8 +1,8 @@
 package pl.wfranik.moviesapp.domain
 
 import kotlinx.coroutines.flow.Flow
+import pl.wfranik.domain_models.Genre
 import pl.wfranik.moviesapp.data.genre.GenresRepository
-import pl.wfranik.moviesapp.domain.model.Genre
 import javax.inject.Inject
 
 class ObserveSelectedGenreUseCase @Inject constructor(

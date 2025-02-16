@@ -1,11 +1,11 @@
 package pl.wfranik.moviesapp.data.movies
 
+import pl.wfranik.domain_models.Genre
+import pl.wfranik.domain_models.Movie
+import pl.wfranik.domain_models.MovieDetails
 import pl.wfranik.moviesapp.api.TmdbService
 import pl.wfranik.moviesapp.data.mapper.MovieDTOMapper
 import pl.wfranik.moviesapp.data.mapper.MovieDetailsDTOMapper
-import pl.wfranik.moviesapp.domain.model.Genre
-import pl.wfranik.moviesapp.domain.model.Movie
-import pl.wfranik.moviesapp.domain.model.MovieDetails
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor(

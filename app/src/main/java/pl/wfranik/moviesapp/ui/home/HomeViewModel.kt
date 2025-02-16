@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import pl.wfranik.domain_models.LoadingState
 import pl.wfranik.moviesapp.domain.MoviesContentManager
-import pl.wfranik.moviesapp.domain.model.LoadingState
 import pl.wfranik.moviesapp.extensions.EventsChannel
 import pl.wfranik.moviesapp.extensions.mutate
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnChangeFiltersClicked

@@ -1,6 +1,6 @@
 package pl.wfranik.moviesapp.ui.home
 
-import pl.wfranik.moviesapp.ui.common.utils.TextLabel
+import pl.wfranik.ui_common.TextLabel
 import pl.wfranik.moviesapp.ui.home.model.MovieListItem
 
 sealed interface HomeViewEvent {

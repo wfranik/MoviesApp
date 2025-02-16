@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import pl.wfranik.domain_models.Genre
 import pl.wfranik.moviesapp.domain.ClearSelectedGenreUseCase
 import pl.wfranik.moviesapp.domain.GetSelectedGenreUseCase
 import pl.wfranik.moviesapp.domain.LoadGenresUseCase
 import pl.wfranik.moviesapp.domain.SaveGenreUseCase
-import pl.wfranik.moviesapp.domain.model.Genre
 import pl.wfranik.moviesapp.extensions.EventsChannel
 import pl.wfranik.moviesapp.extensions.mutate
 import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnBackClicked

@@ -1,6 +1,6 @@
 package pl.wfranik.moviesapp.ui.home.model
 
-import pl.wfranik.moviesapp.domain.model.MovieWithDetails
+import pl.wfranik.domain_models.MovieWithDetails
 import pl.wfranik.moviesapp.extensions.formatCurrency
 import pl.wfranik.moviesapp.ui.common.components.ImagePathBuilder
 import javax.inject.Inject

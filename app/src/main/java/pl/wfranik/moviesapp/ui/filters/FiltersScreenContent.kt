@@ -27,16 +27,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import pl.wfranik.domain_models.Genre
 import pl.wfranik.moviesapp.R
-import pl.wfranik.moviesapp.domain.model.Genre
 import pl.wfranik.moviesapp.ui.common.components.EmptyListContent
 import pl.wfranik.moviesapp.ui.common.components.ErrorContent
 import pl.wfranik.moviesapp.ui.common.components.ErrorSnackbarHost
 import pl.wfranik.moviesapp.ui.common.components.LoadingContent
 import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
 import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
-import pl.wfranik.moviesapp.ui.common.utils.TextLabel
-import pl.wfranik.moviesapp.ui.common.utils.getText
 import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnBackClicked
 import pl.wfranik.moviesapp.ui.filters.FiltersViewAction.OnRetryClicked
 
@@ -142,7 +140,11 @@ fun GenreItem(
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Text(
-                text = genre.name.getText(),
+                text = if (genre == Genre.DEFAULT) {
+                    stringResource(R.string.genre_default_option_label)
+                } else {
+                    genre.name
+                },
                 modifier = Modifier.padding(16.dp),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
@@ -164,7 +166,7 @@ private fun PreviewTopAppBar() {
 private fun PreviewGenreItem() {
     MoviesAppTheme {
         GenreItem(
-            genre = Genre(1, TextLabel("Action")),
+            genre = Genre(1, "Action"),
             selectedGenre = Genre.DEFAULT,
             onGenreClick = { }
         )
@@ -178,25 +180,25 @@ private fun PreviewGenresList() {
         GenresList(
             genres = listOf(
                 Genre.DEFAULT,
-                Genre(1, TextLabel("Action")),
-                Genre(2, TextLabel("Comedy")),
-                Genre(3, TextLabel("Drama")),
-                Genre(4, TextLabel("Horror")),
-                Genre(5, TextLabel("Thriller")),
-                Genre(6, TextLabel("Sci-Fi")),
-                Genre(7, TextLabel("Fantasy")),
-                Genre(8, TextLabel("Adventure")),
-                Genre(9, TextLabel("Animation")),
-                Genre(10, TextLabel("Family")),
-                Genre(11, TextLabel("Romance")),
-                Genre(12, TextLabel("Mystery")),
-                Genre(13, TextLabel("Crime")),
-                Genre(14, TextLabel("Documentary")),
-                Genre(15, TextLabel("Music")),
-                Genre(16, TextLabel("History")),
-                Genre(17, TextLabel("War")),
-                Genre(18, TextLabel("Western")),
-                Genre(19, TextLabel("TV Movie"))
+                Genre(1, "Action"),
+                Genre(2, "Comedy"),
+                Genre(3, "Drama"),
+                Genre(4, "Horror"),
+                Genre(5, "Thriller"),
+                Genre(6, "Sci-Fi"),
+                Genre(7, "Fantasy"),
+                Genre(8, "Adventure"),
+                Genre(9, "Animation"),
+                Genre(10, "Family"),
+                Genre(11, "Romance"),
+                Genre(12, "Mystery"),
+                Genre(13, "Crime"),
+                Genre(14, "Documentary"),
+                Genre(15, "Music"),
+                Genre(16, "History"),
+                Genre(17, "War"),
+                Genre(18, "Western"),
+                Genre(19, "TV Movie")
             ),
             selectedGenre = Genre.DEFAULT,
             onGenreClick = { }

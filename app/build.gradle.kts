@@ -54,6 +54,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain-models"))
+    implementation(project(":ui-common"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(platform(libs.androidx.compose.bom))

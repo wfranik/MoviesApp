@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import pl.wfranik.moviesapp.R
 import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
 import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
-import pl.wfranik.moviesapp.ui.common.utils.TextLabel
+import pl.wfranik.ui_common.TextLabel
 
 @Composable
 fun ErrorContent(

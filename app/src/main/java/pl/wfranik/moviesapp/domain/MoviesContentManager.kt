@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.retry
+import pl.wfranik.domain_models.LoadingState
 import pl.wfranik.moviesapp.data.genre.GenresRepository
-import pl.wfranik.moviesapp.domain.model.LoadingState
 import pl.wfranik.moviesapp.ui.home.model.MovieListItem
 import pl.wfranik.moviesapp.ui.home.model.MovieListItemMapper
 import timber.log.Timber

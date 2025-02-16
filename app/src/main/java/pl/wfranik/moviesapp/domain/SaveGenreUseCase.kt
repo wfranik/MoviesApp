@@ -1,7 +1,7 @@
 package pl.wfranik.moviesapp.domain
 
+import pl.wfranik.domain_models.Genre
 import pl.wfranik.moviesapp.data.genre.GenresRepository
-import pl.wfranik.moviesapp.domain.model.Genre
 import javax.inject.Inject
 
 class SaveGenreUseCase @Inject constructor(

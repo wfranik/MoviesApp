@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.domain.model
+package pl.wfranik.domain_models
 
 sealed class LoadingState<out T> {
     data class Success<T>(val data: T) : LoadingState<T>()

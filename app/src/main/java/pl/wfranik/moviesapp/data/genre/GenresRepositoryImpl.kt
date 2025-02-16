@@ -1,10 +1,9 @@
 package pl.wfranik.moviesapp.data.genre
 
 import kotlinx.coroutines.flow.Flow
+import pl.wfranik.domain_models.Genre
 import pl.wfranik.moviesapp.api.TmdbService
 import pl.wfranik.moviesapp.data.movies.GenreInMemoryStore
-import pl.wfranik.moviesapp.domain.model.Genre
-import pl.wfranik.moviesapp.ui.common.utils.TextLabel
 import javax.inject.Inject
 
 class GenresRepositoryImpl @Inject constructor(
@@ -16,7 +15,7 @@ class GenresRepositoryImpl @Inject constructor(
         tmdbService.getGenres().genres.map { genre ->
             Genre(
                 id = genre.id,
-                name = TextLabel(genre.name)
+                name = genre.name
             )
         }
     }

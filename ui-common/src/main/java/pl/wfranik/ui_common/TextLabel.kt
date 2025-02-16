@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.common.utils
+package pl.wfranik.ui_common
 
 import android.content.Context
 import androidx.annotation.PluralsRes
@@ -7,8 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.platform.LocalContext
-import pl.wfranik.moviesapp.ui.common.utils.TextLabel.Companion
-import pl.wfranik.moviesapp.ui.common.utils.TextLabel.PluralTextLabel.PluralStringParams
+import pl.wfranik.ui_common.TextLabel.PluralTextLabel.PluralStringParams
 
 @Stable
 sealed interface TextLabel {

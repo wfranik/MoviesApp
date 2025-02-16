@@ -1,6 +1,6 @@
 package pl.wfranik.moviesapp.ui.filters
 
-import pl.wfranik.moviesapp.ui.common.utils.TextLabel
+import pl.wfranik.ui_common.TextLabel
 
 sealed interface FiltersViewEvent {
     data object NavigateBack : FiltersViewEvent

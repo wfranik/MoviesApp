@@ -1,7 +1,7 @@
 package pl.wfranik.moviesapp.data.genre
 
 import kotlinx.coroutines.flow.Flow
-import pl.wfranik.moviesapp.domain.model.Genre
+import pl.wfranik.domain_models.Genre
 
 interface GenresRepository {
     suspend fun getGenres(): Result<List<Genre>>

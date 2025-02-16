@@ -1,8 +1,8 @@
 package pl.wfranik.moviesapp.data.movies
 
-import pl.wfranik.moviesapp.domain.model.Genre
-import pl.wfranik.moviesapp.domain.model.Movie
-import pl.wfranik.moviesapp.domain.model.MovieDetails
+import pl.wfranik.domain_models.Genre
+import pl.wfranik.domain_models.Movie
+import pl.wfranik.domain_models.MovieDetails
 
 interface MoviesRepository {
     suspend fun getMovies(): Result<List<Movie>>

@@ -1,7 +1,7 @@
 package pl.wfranik.moviesapp.data.movies
 
 import kotlinx.coroutines.flow.MutableStateFlow
-import pl.wfranik.moviesapp.domain.model.Genre
+import pl.wfranik.domain_models.Genre
 
 class GenreInMemoryStore {
 

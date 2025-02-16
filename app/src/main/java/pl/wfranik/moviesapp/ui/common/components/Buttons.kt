@@ -18,8 +18,8 @@ import androidx.compose.ui.text.style.TextAlign
 import pl.wfranik.moviesapp.ui.common.preview.DefaultPreviews
 import pl.wfranik.moviesapp.ui.common.theme.MoviesAppTheme
 import pl.wfranik.moviesapp.ui.common.theme.dimension
-import pl.wfranik.moviesapp.ui.common.utils.TextLabel
-import pl.wfranik.moviesapp.ui.common.utils.getText
+import pl.wfranik.ui_common.TextLabel
+import pl.wfranik.ui_common.getText
 
 @Composable
 fun primaryButtonColors(): ButtonColors = ButtonDefaults.buttonColors(

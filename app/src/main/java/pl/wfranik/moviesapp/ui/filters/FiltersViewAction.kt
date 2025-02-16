@@ -1,6 +1,6 @@
 package pl.wfranik.moviesapp.ui.filters
 
-import pl.wfranik.moviesapp.domain.model.Genre
+import pl.wfranik.domain_models.Genre
 
 sealed interface FiltersViewAction {
     data object OnBackClicked : FiltersViewAction
