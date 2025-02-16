@@ -1,6 +1,6 @@
-package pl.wfranik.moviesapp.ui.home
+package pl.wfranik.ui_home
 
-import pl.wfranik.moviesapp.ui.home.model.MovieListItem
+import pl.wfranik.ui_home.model.MovieListItem
 
 sealed interface HomeViewAction {
     data object OnChangeFiltersClicked : HomeViewAction

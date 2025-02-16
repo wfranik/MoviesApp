@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.extensions
+package pl.wfranik.ui_common.extensions
 
 import android.icu.text.CompactDecimalFormat
 import android.icu.util.Currency

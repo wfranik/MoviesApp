@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.common.navigation
+package pl.wfranik.ui_common_navigation
 
 import kotlinx.serialization.Serializable
 

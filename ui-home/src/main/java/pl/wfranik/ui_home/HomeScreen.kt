@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.home
+package pl.wfranik.ui_home
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -11,10 +11,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import pl.wfranik.ui_common.extensions.observeAsEvents
-import pl.wfranik.moviesapp.ui.common.navigation.Screen
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.OpenFiltersScreen
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.OpenMovieDetails
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.ShowError
+import pl.wfranik.ui_common_navigation.Screen
+import pl.wfranik.ui_home.HomeViewEvent.OpenFiltersScreen
+import pl.wfranik.ui_home.HomeViewEvent.OpenMovieDetails
+import pl.wfranik.ui_home.HomeViewEvent.ShowError
 
 @Composable
 fun HomeScreen(

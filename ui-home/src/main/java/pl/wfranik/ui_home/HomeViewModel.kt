@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.home
+package pl.wfranik.ui_home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,11 +12,13 @@ import pl.wfranik.domain_models.LoadingState
 import pl.wfranik.domain_usecase.MoviesContentManager
 import pl.wfranik.ui_common.extensions.EventsChannel
 import pl.wfranik.ui_common.extensions.mutate
-import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnChangeFiltersClicked
-import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnMovieClicked
-import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnRetryClicked
-import pl.wfranik.moviesapp.ui.home.model.MovieListItem
-import pl.wfranik.moviesapp.ui.home.model.MovieListItemMapper
+import pl.wfranik.ui_home.HomeViewAction.OnChangeFiltersClicked
+import pl.wfranik.ui_home.HomeViewAction.OnMovieClicked
+import pl.wfranik.ui_home.HomeViewAction.OnRetryClicked
+import pl.wfranik.ui_home.model.MovieListItem
+import pl.wfranik.ui_home.HomeViewEvent.OpenFiltersScreen
+import pl.wfranik.ui_home.HomeViewEvent.OpenMovieDetails
+import pl.wfranik.ui_home.model.MovieListItemMapper
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -40,8 +42,8 @@ class HomeViewModel @Inject constructor(
 
     fun onViewAction(viewEvent: HomeViewAction) = viewModelScope.launch {
         when (viewEvent) {
-            OnChangeFiltersClicked -> _event.send(HomeViewEvent.OpenFiltersScreen)
-            is OnMovieClicked -> _event.send(HomeViewEvent.OpenMovieDetails(viewEvent.movieListItem))
+            OnChangeFiltersClicked -> _event.send(OpenFiltersScreen)
+            is OnMovieClicked -> _event.send(OpenMovieDetails(viewEvent.movieListItem))
             OnRetryClicked -> moviesContentManager.refresh()
         }
     }

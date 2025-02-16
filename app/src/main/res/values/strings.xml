@@ -1,15 +1,4 @@
 <resources>
     <string name="app_name">MoviesApp</string>
 
-    <string name="close_label">Close</string>
-    <string name="retry_label">Retry</string>
-
-    <string name="image_placeholder_description">Image placeholder</string>
-    <string name="error_no_data">There is no data to show</string>
-    <string name="error_loading_data_failed">Failed to load data</string>
-    <string name="error_something_went_wrong">An error occurred.\nTry again later.</string>
-
-    <string name="movie_rating_label">Rating: %s</string>
-    <string name="movie_revenue_label">Revenue: %s</string>
-    <string name="movie_budget_label">Budget: %s</string>
 </resources>

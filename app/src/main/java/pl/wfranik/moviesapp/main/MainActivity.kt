@@ -10,11 +10,11 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import pl.wfranik.moviesapp.ui.common.navigation.Navigation
-import pl.wfranik.moviesapp.ui.common.navigation.Screen.Home
+import pl.wfranik.moviesapp.navigation.Navigation
 import pl.wfranik.ui_common.theme.MoviesAppTheme
 import pl.wfranik.ui_common.utils.OnNavControllerInitializedListener
 import pl.wfranik.ui_common.utils.SetupState
+import pl.wfranik.ui_common_navigation.Screen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -58,7 +58,7 @@ fun MainScreen(
     MoviesAppTheme {
         Navigation(
             navController = navController,
-            startDestination = Home
+            startDestination = Screen.Home
         )
     }
 }

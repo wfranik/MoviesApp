@@ -1,11 +1,14 @@
-package pl.wfranik.moviesapp.ui.common.navigation
+package pl.wfranik.moviesapp.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import pl.wfranik.ui_common_navigation.Screen
+import pl.wfranik.ui_common_navigation.Screen.Filters
+import pl.wfranik.ui_common_navigation.Screen.Home
 import pl.wfranik.ui_filters.FiltersScreen
-import pl.wfranik.moviesapp.ui.home.HomeScreen
+import pl.wfranik.ui_home.HomeScreen
 
 @Composable
 fun Navigation(navController: NavHostController, startDestination: Screen) {
@@ -13,11 +16,11 @@ fun Navigation(navController: NavHostController, startDestination: Screen) {
         navController = navController,
         startDestination = startDestination
     ) {
-        composable<Screen.Home> {
+        composable<Home> {
             HomeScreen(navController = navController)
         }
 
-        composable<Screen.Filters> {
+        composable<Filters> {
             FiltersScreen(navController = navController)
         }
     }

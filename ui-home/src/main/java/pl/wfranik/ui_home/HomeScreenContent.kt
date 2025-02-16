@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.home
+package pl.wfranik.ui_home
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
@@ -27,7 +27,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pl.wfranik.moviesapp.R
 import pl.wfranik.ui_common.components.AsyncImage
 import pl.wfranik.ui_common.components.EmptyListContent
 import pl.wfranik.ui_common.components.ErrorContent
@@ -36,8 +35,10 @@ import pl.wfranik.ui_common.components.LoadingContent
 import pl.wfranik.ui_common.components.PlaceholderComponent
 import pl.wfranik.ui_common.preview.DefaultPreviews
 import pl.wfranik.ui_common.theme.MoviesAppTheme
-import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnRetryClicked
-import pl.wfranik.moviesapp.ui.home.model.MovieListItem
+import pl.wfranik.ui_home.HomeViewAction.OnRetryClicked
+import pl.wfranik.ui_home.model.MovieListItem
+import pl.wfranik.ui_home.HomeViewAction.OnChangeFiltersClicked
+import pl.wfranik.ui_home.HomeViewAction.OnMovieClicked
 
 @Composable
 internal fun HomeScreenContent(
@@ -53,7 +54,7 @@ internal fun HomeScreenContent(
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                onClick = { onViewAction(HomeViewAction.OnChangeFiltersClicked) },
+                onClick = { onViewAction(OnChangeFiltersClicked) },
                 icon = { Icon(painter = painterResource(id = R.drawable.round_filter_list_24), contentDescription = "Filter") },
                 text = { Text(text = "Filter") },
             )
@@ -71,7 +72,7 @@ internal fun HomeScreenContent(
 
                 else -> MoviesList(
                     movies = state.movies,
-                    onMovieClick = { onViewAction(HomeViewAction.OnMovieClicked(it)) }
+                    onMovieClick = { onViewAction(OnMovieClicked(it)) }
                 )
             }
         }

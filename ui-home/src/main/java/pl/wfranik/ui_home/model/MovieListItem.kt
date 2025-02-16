@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.home.model
+package pl.wfranik.ui_home.model
 
 data class MovieListItem(
     val id: Int,

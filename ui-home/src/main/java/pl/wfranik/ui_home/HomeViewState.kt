@@ -1,6 +1,6 @@
-package pl.wfranik.moviesapp.ui.home
+package pl.wfranik.ui_home
 
-import pl.wfranik.moviesapp.ui.home.model.MovieListItem
+import pl.wfranik.ui_home.model.MovieListItem
 
 data class HomeViewState(
     val movies: List<MovieListItem> = emptyList(),

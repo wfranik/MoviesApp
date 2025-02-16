@@ -1,7 +1,7 @@
-package pl.wfranik.moviesapp.ui.home
+package pl.wfranik.ui_home
 
 import pl.wfranik.ui_common.utils.TextLabel
-import pl.wfranik.moviesapp.ui.home.model.MovieListItem
+import pl.wfranik.ui_home.model.MovieListItem
 
 sealed interface HomeViewEvent {
     data object OpenFiltersScreen : HomeViewEvent

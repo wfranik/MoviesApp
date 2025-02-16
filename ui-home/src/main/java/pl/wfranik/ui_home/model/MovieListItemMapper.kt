@@ -1,9 +1,9 @@
-package pl.wfranik.moviesapp.ui.home.model
+package pl.wfranik.ui_home.model
 
+import pl.wfranik.domain_models.MovieWithDetails
 import pl.wfranik.ui_common.components.ImagePathBuilder
 import pl.wfranik.ui_common.components.ImagePathBuilder.BackdropSize.W1280
-import pl.wfranik.domain_models.MovieWithDetails
-import pl.wfranik.moviesapp.extensions.formatCurrency
+import pl.wfranik.ui_common.extensions.formatCurrency
 import javax.inject.Inject
 
 class MovieListItemMapper @Inject constructor() {
