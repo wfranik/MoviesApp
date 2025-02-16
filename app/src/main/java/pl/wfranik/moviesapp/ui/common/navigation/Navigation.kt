@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import pl.wfranik.moviesapp.ui.filters.FiltersScreen
+import pl.wfranik.ui_filters.FiltersScreen
 import pl.wfranik.moviesapp.ui.home.HomeScreen
 
 @Composable

@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import pl.wfranik.domain_models.LoadingState
 import pl.wfranik.domain_usecase.MoviesContentManager
-import pl.wfranik.moviesapp.extensions.EventsChannel
-import pl.wfranik.moviesapp.extensions.mutate
+import pl.wfranik.ui_common.extensions.EventsChannel
+import pl.wfranik.ui_common.extensions.mutate
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnChangeFiltersClicked
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnMovieClicked
 import pl.wfranik.moviesapp.ui.home.HomeViewAction.OnRetryClicked

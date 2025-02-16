@@ -1,4 +1,4 @@
-package pl.wfranik.moviesapp.ui.home
+package pl.wfranik.ui_filters
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -11,15 +11,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import pl.wfranik.ui_common.extensions.observeAsEvents
-import pl.wfranik.moviesapp.ui.common.navigation.Screen
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.OpenFiltersScreen
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.OpenMovieDetails
-import pl.wfranik.moviesapp.ui.home.HomeViewEvent.ShowError
+import pl.wfranik.ui_filters.FiltersViewEvent.NavigateBack
+import pl.wfranik.ui_filters.FiltersViewEvent.ShowError
 
 @Composable
-fun HomeScreen(
+fun FiltersScreen(
     navController: NavController,
-    viewModel: HomeViewModel = hiltViewModel(),
+    viewModel: FiltersViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
@@ -28,19 +26,15 @@ fun HomeScreen(
 
     viewModel.event.observeAsEvents { event ->
         when (event) {
-            is OpenFiltersScreen -> {
-                navController.navigate(Screen.Filters)
-            }
-
-            is OpenMovieDetails -> {
-                coroutineScope.launch { snackbarHostState.showSnackbar("Movie: ${event.movieListItem.title}") }
+            is NavigateBack -> {
+                navController.navigateUp()
             }
 
             is ShowError -> coroutineScope.launch { snackbarHostState.showSnackbar(event.textLabel.invoke(context)) }
         }
     }
 
-    HomeScreenContent(
+    FiltersScreenContent(
         state = state,
         onViewAction = viewModel::onViewAction,
         snackbarHostState = snackbarHostState
