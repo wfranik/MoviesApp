@@ -1,13 +1,19 @@
-# MoviesApp
+## 📱 Movies App – Built for Learning & Best Practices 🎬
+This application was developed exclusively for testing purposes to demonstrate modern Android development best practices. It serves as a reference for clean, maintainable, and scalable Android applications, utilizing industry-standard tools, architecture patterns, and libraries.
 
-A modern Android application for browsing movies, powered by the TMDB API.
+## 🛠️ Key Objectives
+* Showcase clean, efficient, and testable Android code.
+* Implement modern architecture principles like MVVM, MVI and Clean Architecture.
+* Apply Kotlin Coroutines, Flow, and Jetpack Components for robust asynchronous operations.
+* Demonstrate integration with The Movie Database (TMDB) API to fetch and display movie data.
 
-## Description
-
-MoviesApp is a sleek and intuitive Android application that allows users to explore a vast library
-of movies. Leveraging the power of the TMDB (The Movie Database) API, this app helps you discover
-popular movies. Built with modern Android development
-practices and technologies, MoviesApp offers a smooth and engaging user experience.
+## 🔍 Features Demonstrated
+* **Movie Discovery:** Fetch and display a list of movies using the TMDB API.
+* **Network Operations:** Efficient data fetching with Ktor and OkHttp.
+* **Dependency Injection:** Leverage Hilt for modular and testable code.
+* **State Management:** Use ViewModel with StateFlow, Channel and Flow for UI state handling.
+* **Modularization:** The project is structured using a modular architecture to improve code
+  organization and maintainability.
 
 ## Key Features
 
@@ -45,6 +51,11 @@ practices and technologies, MoviesApp offers a smooth and engaging user experien
   consistent look and feel.
 * **TMDB API:** The Movie Database API, used to fetch movie data.
 
+## Build requirements
+
+1. **Android Studio Ladybug Feature Drop | 2024.2.2**
+2. **Java version 17.0.7**
+
 ## Setup and Installation
 
 1. **Clone the Repository:** Use the following command to clone the project repository to your local
@@ -66,17 +77,10 @@ practices and technologies, MoviesApp offers a smooth and engaging user experien
 
 4. **Build and Run:** Build and run the project on an emulator or a physical device.
 
-## Usage
-
-1. Launch the app.
-2. Filter by selected movie genres (e.g., Action, Comedy, Drama).
-3. Tap on a movie to view its details (TBD - for now it's snackbar with movie title).
-4. Tap on Filters button (FAB) to open filters screen.
-
 ## Known Issues
 
-1. **No Unit Tests:** The project does not contain any unit tests yet. This will be addressed in
-   future updates.
+1. **Unit Tests:** For now there is only one unit test implemented -
+   LoadMoviesWithDetailsUseCaseTest.
 2. **No Movie Details:** The movie details screen is not yet implemented. Clicking on a movie will
    display a snackbar with the movie title instead.
 
