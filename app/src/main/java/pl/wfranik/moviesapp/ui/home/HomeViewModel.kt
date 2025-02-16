@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor(
     fun onViewAction(viewEvent: HomeViewAction) = viewModelScope.launch {
         when (viewEvent) {
             OnChangeFiltersClicked -> _event.send(HomeViewEvent.OpenFiltersScreen)
-            is OnMovieClicked -> _event.send(HomeViewEvent.OpenMovieDetails(viewEvent.movieListItem.id))
+            is OnMovieClicked -> _event.send(HomeViewEvent.OpenMovieDetails(viewEvent.movieListItem))
             OnRetryClicked -> moviesContentManager.refresh()
         }
     }

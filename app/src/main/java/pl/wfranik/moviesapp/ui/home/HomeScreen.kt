@@ -33,7 +33,7 @@ fun HomeScreen(
             }
 
             is OpenMovieDetails -> {
-                navController.navigate(Screen.MovieDetails(event.movieId))
+                coroutineScope.launch { snackbarHostState.showSnackbar("Movie: ${event.movieListItem.title}") }
             }
 
             is ShowError -> coroutineScope.launch { snackbarHostState.showSnackbar(event.textLabel.invoke(context)) }

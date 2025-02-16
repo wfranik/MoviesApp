@@ -20,9 +20,5 @@ fun Navigation(navController: NavHostController, startDestination: Screen) {
         composable<Screen.Filters> {
             FiltersScreen(navController = navController)
         }
-
-        composable<Screen.MovieDetails> {
-            FiltersScreen(navController = navController)
-        }
     }
 }

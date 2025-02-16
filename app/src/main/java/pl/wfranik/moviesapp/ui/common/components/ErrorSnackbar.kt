@@ -59,13 +59,12 @@ private fun ErrorSnackbarContent(
             TextButton(onClick = { onDismissed() }) {
                 Text(
                     text = stringResource(id = R.string.close_label),
-                    color = MaterialTheme.colorScheme.onSurface,
+                    color = MaterialTheme.colorScheme.inverseOnSurface,
                     style = MaterialTheme.typography.titleMedium,
                 )
             }
         },
         actionOnNewLine = true,
-        containerColor = MaterialTheme.colorScheme.errorContainer,
     ) {
         Text(
             modifier = Modifier.fillMaxWidth(),
